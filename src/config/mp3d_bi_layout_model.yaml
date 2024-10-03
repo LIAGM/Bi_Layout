@@ -45,7 +45,7 @@ TRAIN:
   EPOCHS: 2001  
 DATA:
   DATASET: 'mp3d'
-  DIR: 'src/dataset/mp3d'
+  DIR: 'src/dataset/mp3d' # your MatterportLayout dataset path
   BATCH_SIZE: 10
   NUM_WORKERS: 4
   # BATCH_SIZE: 2
@@ -56,4 +56,6 @@ DATA:
     STRETCH: True
     ROTATE: True
     GAMMA: True
+# EVAL:
+#   OPENING: True # the model will have opening output if True
 AMP_OPT_LEVEL: 'O0'
