@@ -5,8 +5,6 @@
 import numpy as np
 import torch.utils.data
 from dataset.mp3d_dataset import MP3DDataset
-from dataset.pano_s2d3d_dataset import PanoS2D3DDataset
-from dataset.pano_s2d3d_mix_dataset import PanoS2D3DMixDataset
 from dataset.zind_dataset import ZindDataset
 from dataset.zind_new_dataset import ZindNewDataset    # new
 
@@ -78,32 +76,6 @@ def build_dataset(mode, config, logger):
             for_test_index=config.DATA.FOR_TEST_INDEX,
             keys=config.DATA.KEYS,
             # head_mismatch=config.MODEL.HEAD_MISMATCH,
-        )
-    elif name == 'pano_s2d3d':
-        dataset = PanoS2D3DDataset(
-            root_dir=config.DATA.DIR,
-            mode=mode,
-            shape=config.DATA.SHAPE,
-            max_wall_num=config.DATA.WALL_NUM,
-            aug=config.DATA.AUG if mode == 'train' else None,
-            camera_height=config.DATA.CAMERA_HEIGHT,
-            logger=logger,
-            for_test_index=config.DATA.FOR_TEST_INDEX,
-            subset=config.DATA.SUBSET,
-            keys=config.DATA.KEYS
-        )
-    elif name == 'pano_s2d3d_mix':
-        dataset = PanoS2D3DMixDataset(
-            root_dir=config.DATA.DIR,
-            mode=mode,
-            shape=config.DATA.SHAPE,
-            max_wall_num=config.DATA.WALL_NUM,
-            aug=config.DATA.AUG if mode == 'train' else None,
-            camera_height=config.DATA.CAMERA_HEIGHT,
-            logger=logger,
-            for_test_index=config.DATA.FOR_TEST_INDEX,
-            subset=config.DATA.SUBSET,
-            keys=config.DATA.KEYS
         )
     elif name == 'zind' and config.MODEL.TYPE == 'origin':
         dataset = ZindDataset(

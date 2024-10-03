@@ -42,17 +42,6 @@ def read_label(label_path, data_type='MP3D'):
         xyz[:, 2] *= -1
         xyz[:, 1] = camera_height
         corners = xyz2uv(xyz)
-    elif data_type == 'Pano_S2D3D':
-        with open(label_path, 'r') as f:
-            lines = [line for line in f.readlines() if
-                     len([c for c in line.split(' ') if c[0].isnumeric()]) > 1]
-
-        corners_list = np.array([line.strip().split() for line in lines], np.float32)
-        uv_list = pixel2uv(corners_list)
-        ceil_uv = uv_list[::2]
-        floor_uv = uv_list[1::2]
-        ratio = calc_ceil_ratio([ceil_uv, floor_uv], mode='mean')
-        corners = floor_uv
     else:
         return None
 
