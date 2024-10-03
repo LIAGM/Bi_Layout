@@ -90,9 +90,7 @@ def parse_option():
                         default='best',
                         choices=['last', 'best', 'oracle', 'average'],
                         help='checkpoint options')
-    
-    parser.add_argument('--pure', action='store_true',
-                        help='save pure result without depth')
+
 
     args = parser.parse_args()
     args.debug = debug
@@ -336,7 +334,7 @@ def val_an_epoch(model, val_data_loader, criterion, config, logger, writer, epoc
         # 'opening_precision': [],
         # 'opening_recall': [],
         # 'opening_f1': [],
-        'opening_ap': [],   # average precision, the area under the precision-recall curve
+        # 'opening_ap': [],   # average precision, the area under the precision-recall curve
     }
 
     # new head to origin label
@@ -706,7 +704,7 @@ def val_an_epoch(model, val_data_loader, criterion, config, logger, writer, epoc
                 os.makedirs(iou_first_path, exist_ok=True)
                 for k in range(len(imgs)):
                     img = imgs[k] * 255.0
-                    save_path = os.path.join(iou_first_path, f"{gt['id'][k]}_{full_iou_2ds[k]:.5f}_{full_iou_3ds[k]:.5f}.png")  # 3d iou is for single head oracle test
+                    save_path = os.path.join(iou_first_path, f"{gt['id'][k]}_{full_iou_2ds[k]:.5f}.png")
                     Image.fromarray(img.transpose(1, 2, 0).astype(np.uint8)).save(save_path)
 
                 if config.MODEL.TYPE == 'occlusion':
@@ -735,12 +733,12 @@ def val_an_epoch(model, val_data_loader, criterion, config, logger, writer, epoc
                     #     Image.fromarray(img.transpose(1, 2, 0).astype(np.uint8)).save(save_path)
 
                     # disambiguate qualitative results--------------------------------
-                    iou_first_path_second = os.path.join(config.CKPT.RESULT_DIR, 'disambiguate_results')
-                    os.makedirs(iou_first_path_second, exist_ok=True)
-                    for k in range(len(disambiguate_imgs)):
-                        img = disambiguate_imgs[k] * 255.0
-                        save_path = os.path.join(iou_first_path_second, f"{gt['id'][k]}_{new_full_iou_2ds[k]:.5f}.png")
-                        Image.fromarray(img.transpose(1, 2, 0).astype(np.uint8)).save(save_path)
+                    # iou_first_path_second = os.path.join(config.CKPT.RESULT_DIR, 'disambiguate_results')
+                    # os.makedirs(iou_first_path_second, exist_ok=True)
+                    # for k in range(len(disambiguate_imgs)):
+                    #     img = disambiguate_imgs[k] * 255.0
+                    #     save_path = os.path.join(iou_first_path_second, f"{gt['id'][k]}_{new_full_iou_2ds[k]:.5f}.png")
+                    #     Image.fromarray(img.transpose(1, 2, 0).astype(np.uint8)).save(save_path)
 
                     # ambiguity detection qualitative results
                     if config.EVAL.OPENING:
