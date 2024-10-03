@@ -3,7 +3,7 @@ This is PyTorch implementation of our paper "[No More Ambiguity in 360° Room La
  [[Project Page](https://liagm.github.io/Bi_Layout/)]
 
 
-![network](src/fig/network.png)
+![network](assets/figure/bi_layout_network.png)
 
 Inherent ambiguity in layout annotations poses significant challenges to developing accurate 360° room layout estimation models. To address this issue, we propose a novel Bi-Layout model capable of predicting two distinct layout types. One stops at ambiguous regions, while the other extends to encompass all visible areas. Our model employs two global context embeddings, where each embedding is designed to capture specific contextual information for each layout type. With our novel feature guidance module, the image feature retrieves relevant context from these embeddings, generating layout-aware features for precise bi-layout predictions.
 
@@ -18,20 +18,21 @@ pip install -r requirements.txt
 
 # Preparing Dataset
 ### MatterportLayout
-Office MatterportLayout dataset is at [here](https://github.com/ericsujw/Matterport3DLayoutAnnotation).
-
+You can download our processed MatterportLayout dataset at [here](https://huggingface.co/datasets/LIAGM/Bi_Layout_Dataset/blob/main/mp3d.zip).
 
 Make sure the dataset files are stored as follows:
 ```
 src/dataset/mp3d
 |-- image
-|   |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.png
+    |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.png
 |-- label
-|   |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.json
+    |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.json
 |-- split
     |-- test.txt
     |-- train.txt
     |-- val.txt
+|-- all_mix_labels_in_uv_v2
+    |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.txt
 
 ```
 
