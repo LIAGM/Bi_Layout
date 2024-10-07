@@ -13,8 +13,10 @@ A unique property of our Bi-Layout model is its ability to inherently detect amb
 # Installation
 Install our dependencies:
 ```shell
-conda env create -f environment.yaml
+conda create -n bi_layout python=3.8 -y
 conda activate bi_layout
+pip install -r requirements.txt
+conda install pytorch==1.12.0 torchvision==0.13.0 cudatoolkit=11.3 -c pytorch -y
 ```
 
 
