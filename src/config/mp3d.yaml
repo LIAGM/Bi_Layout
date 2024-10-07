@@ -1,5 +1,5 @@
-COMMENT: 'Training on ZInd'
-TAG: 'cvpr_zind_all'
+COMMENT: 'Training on MatterportLayout'
+TAG: 'mp3d'
 SEED: 123
 MODEL:
   NAME: 'Bi_Layout'
@@ -37,25 +37,22 @@ TRAIN:
       WEIGHTS: [ 1.0, 1.0 ]
   BASE_LR:
     1e-4
-  RESUME_LAST: False
+  # RESUME_LAST: False
+  RESUME_LAST: True
   OPTIMIZER:
     NAME: 'adam'
-  EPOCHS: 200
+  EPOCHS: 2001  
 DATA:
-  DATASET: 'zind'
-  DIR: '/media/public_dataset/ZInD/data'  # your ZInD dataset path
-  TYPE: 'both' # raw, visible, both (using both will be for bi-layout version)
-  SIMPLICITY: 'both'  # simple, complex, both
-  PRIMARY: 'both'  # primary, secondary, both
-  BATCH_SIZE: 12
-  NUM_WORKERS: 12
+  DATASET: 'mp3d'
+  DIR: 'src/dataset/mp3d' # your MatterportLayout dataset path
+  BATCH_SIZE: 10
+  NUM_WORKERS: 4
   FOR_TEST_INDEX: None
   AUG:
     FLIP: True
     STRETCH: True
     ROTATE: True
     GAMMA: True
-EVAL:
-  EVAL_GT_MISMATCH: True  # need to be True if you want to evaluate on ZInD dataset
-  OPENING: True # the model will have opening output if True
+# EVAL:
+#   OPENING: True # the model will have opening output if True
 AMP_OPT_LEVEL: 'O0'

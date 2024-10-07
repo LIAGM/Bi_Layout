@@ -1,5 +1,5 @@
 COMMENT: 'Training on ZInd'
-TAG: 'paper_model_zind_all_new_best_512'
+TAG: 'zind_all'
 SEED: 123
 MODEL:
   NAME: 'Bi_Layout'
@@ -18,7 +18,6 @@ MODEL:
     'share_TF': True,
     'two_conv_out': False,
   } ]
-  DEFINITION_MISMATCH: True # for correct oracle test
 TRAIN:
   DEVICE: 'cuda:0'
   SCRATCH: False
@@ -36,8 +35,6 @@ TRAIN:
     NEW_GRAD:
       WEIGHT: 0.1
       WEIGHTS: [ 1.0, 1.0 ]
-    # OPENING:
-    #   WEIGHT: 0.5
   BASE_LR:
     1e-4
   RESUME_LAST: False
@@ -46,9 +43,9 @@ TRAIN:
   EPOCHS: 200
 DATA:
   DATASET: 'zind'
-  # DIR: 'src/dataset/zind'
-  DIR: '/media/public_dataset/ZInD/data'
-  TYPE: 'visible' # raw, visible, both -> both will be for two-head
+  # DIR: '/media/public_dataset/ZInD/data'  # your ZInD dataset path
+  DIR: '/ssd2/yuju/lgtnet_dataset/ZInD'
+  TYPE: 'both' # raw, visible, both (using both will be for bi-layout version)
   SIMPLICITY: 'both'  # simple, complex, both
   PRIMARY: 'both'  # primary, secondary, both
   BATCH_SIZE: 12
@@ -59,4 +56,7 @@ DATA:
     STRETCH: True
     ROTATE: True
     GAMMA: True
+EVAL:
+  EVAL_GT_MISMATCH: True  # need to be True if you want to evaluate on ZInD dataset
+  # OPENING: True # the model will have opening output if True
 AMP_OPT_LEVEL: 'O0'
