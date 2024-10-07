@@ -13,8 +13,27 @@ A unique property of our Bi-Layout model is its ability to inherently detect amb
 # Installation
 Install our dependencies:
 ```shell
-pip install -r requirements.txt
+conda env create -f environment.yaml
 ```
+
+
+
+# Preparing Model Weights
+You can download our model weights at [here](https://huggingface.co/LIAGM/Bi_Layout_Model/tree/main).
+
+Make sure the model weight files are stored as follows:
+```
+checkpoints/
+|-- Bi_Layout_Net
+    |-- mp3d
+        |-- mp3d_best_model.pkl
+    |-- zind_all
+        |-- zind_all_best_model.pkl
+    |-- zind_simple
+        |-- zind_simple_best_model.pkl
+```
+
+
 
 # Preparing Dataset
 ### MatterportLayout
@@ -22,7 +41,7 @@ You can download our processed MatterportLayout dataset at [here](https://huggin
 
 Make sure the dataset files are stored as follows:
 ```
-src/dataset/mp3d
+src/dataset/mp3d/
 |-- image
     |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.png
 |-- label
@@ -36,40 +55,49 @@ src/dataset/mp3d
 
 ```
 
----
-
 ### ZInd
 Office ZInd dataset is at [here](https://github.com/zillow/zind).
 
 Make sure the dataset files are stored as follows:
 ```
-src/dataset/zind
+src/dataset/zind/
 |-- 0000
-|   |-- panos
-|   |   |-- floor_01_partial_room_01_pano_14.jpg
-|   |-- zind_data.json
+    |-- panos
+        |-- floor_01_partial_room_01_pano_14.jpg
+    |-- zind_data.json
 |-- room_shape_simplicity_labels.json
 |-- zind_partition.json
 ```
 
+
+
 # Evaluation
 You can evaluate by executing the following command:
 
+If you want to save the visual results, please add "--save_eval" to the command.
+
 - MatterportLayout dataset
     ```shell
-    python main.py --cfg src/config/mp3d_bi_layout_model.yaml --mode test
+    python main.py --cfg src/config/mp3d.yaml --mode test
     ```
-- ZInd dataset
+- ZInd All dataset
     ```shell
-    python main.py --cfg src/config/zind_cvpr.yaml --mode test
+    python main.py --cfg src/config/zind_all.yaml --mode test
     ```
+- ZInd Simple dataset
+    ```shell
+    python main.py --cfg src/config/zind_simple.yaml --mode test
+    ```
+
+
 
 # Training
 Execute the following commands to train  (e.g., MatterportLayout dataset):
 ```shell
-python main.py --cfg src/config/mp3d_bi_layout_model.yaml --mode train
+python main.py --cfg src/config/mp3d.yaml --mode train
 ```
 You can copy and modify the configuration in `YAML` file for other training.
+
 
 
 # Acknowledgements
@@ -80,8 +108,11 @@ Some components refer to the following projects:
 - [HorizonNet](https://github.com/sunset1995/HorizonNet#1-pre-processing-align-camera-rotation-pose)
 - [LED2-Net](https://github.com/fuenwang/LED2-Net)
 - [PanoPlane360](https://github.com/sunset1995/PanoPlane360)
-- [DuLa-Net ](https://github.com/SunDaDenny/DuLa-Net)
+- [DuLa-Net](https://github.com/SunDaDenny/DuLa-Net)
 - [indoor-layout-evaluation](https://github.com/bertjiazheng/indoor-layout-evaluation)
+- [LGT-Net](https://github.com/zhigangjiang/LGT-Net)
+
+---
 
 # Citation
 If you use this code for your research, please cite

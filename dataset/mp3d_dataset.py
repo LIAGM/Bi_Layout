@@ -35,9 +35,6 @@ class MP3DDataset(BaseDataset):
             # full set    
             with open(os.path.join(split_dir, f"{mode}.txt"), 'r') as f:
                 split_list = [x.rstrip().split() for x in f]
-            # for subset evaluation
-            # with open(os.path.join(split_dir, f"final_subset.txt"), 'r') as f:
-            #     split_list = [x.rstrip().split('_')[:2] for x in f]
 
             # Final subset (LED + LGT + DOP), if want to do subset evaluation, please uncomment the following code
             # with open(os.path.join(split_dir, f"final_subset.txt"), 'r') as f:
