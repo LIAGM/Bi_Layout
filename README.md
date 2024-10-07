@@ -14,6 +14,7 @@ A unique property of our Bi-Layout model is its ability to inherently detect amb
 Install our dependencies:
 ```shell
 conda env create -f environment.yaml
+conda activate bi_layout
 ```
 
 
