@@ -43,8 +43,7 @@ TRAIN:
   EPOCHS: 200
 DATA:
   DATASET: 'zind'
-  # DIR: '/media/public_dataset/ZInD/data'  # your ZInD dataset path
-  DIR: '/ssd2/yuju/lgtnet_dataset/ZInD'
+  DIR: 'src/dataset/ZInD'  # your ZInD dataset path
   TYPE: 'both' # raw, visible, both (using both will be for bi-layout version)
   SIMPLICITY: 'both'  # simple, complex, both
   PRIMARY: 'both'  # primary, secondary, both
