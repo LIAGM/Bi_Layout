@@ -75,6 +75,13 @@ src/dataset/zind/
 
 
 # Evaluation
+
+![results](assets/figure/full_table.png)
+
+- We report "full_2d" and "full_3d" as 2DIoU and 3DIoU.
+- For equivalent branch, please refer to "ValEpochIoU".
+- For disambiguate result, please refer to "Oracle_ValEpochIoU".
+
 You can evaluate by executing the following command:
 
 If you want to save the visual results, please add "--save_eval" to the command.
