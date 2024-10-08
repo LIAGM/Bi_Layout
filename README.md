@@ -99,8 +99,8 @@ Execute the following commands to train  (e.g., MatterportLayout dataset):
 ```shell
 python main.py --cfg src/config/mp3d.yaml --mode train
 ```
-You can copy and modify the configuration in `YAML` file for other training.
-
+- You can copy and modify the configuration in `YAML` file for other training.
+- You can change the configuration of pin memory at line 26 in "dataset/build.py" to see the training speed change.
 
 
 # Acknowledgements

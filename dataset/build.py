@@ -22,6 +22,7 @@ def build_loader(config, logger):
     train_sampler = None
     val_sampler = None
     self_shuffle = True
+    # change this pin memory options to see the speed changes
     self_pin_memory = False
     if ddp:
         if train_dataset:
