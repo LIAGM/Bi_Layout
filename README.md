@@ -27,12 +27,12 @@ You can download our model weights at [here](https://huggingface.co/LIAGM/Bi_Lay
 Make sure the model weight files are stored as follows:
 ```
 checkpoints/
-|-- Bi_Layout_Net
-    |-- mp3d
+|-- Bi_Layout_Net/
+    |-- mp3d/
         |-- mp3d_best_model.pkl
-    |-- zind_all
+    |-- zind_all/
         |-- zind_all_best_model.pkl
-    |-- zind_simple
+    |-- zind_simple/
         |-- zind_simple_best_model.pkl
 ```
 
@@ -45,15 +45,15 @@ You can download our processed MatterportLayout dataset at [here](https://huggin
 Make sure the dataset files are stored as follows:
 ```
 src/dataset/mp3d/
-|-- image
+|-- image/
     |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.png
-|-- label
+|-- label/
     |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.json
-|-- split
+|-- split/
     |-- test.txt
     |-- train.txt
     |-- val.txt
-|-- all_mix_labels_in_uv_v2
+|-- all_mix_labels_in_uv_v2/
     |-- 17DRP5sb8fy_08115b08da534f1aafff2fa81fc73512.txt
 
 ```
@@ -63,9 +63,9 @@ Office ZInd dataset is at [here](https://github.com/zillow/zind).
 
 Make sure the dataset files are stored as follows:
 ```
-src/dataset/zind/
-|-- 0000
-    |-- panos
+src/dataset/ZInd/
+|-- 0000/
+    |-- panos/
         |-- floor_01_partial_room_01_pano_14.jpg
     |-- zind_data.json
 |-- room_shape_simplicity_labels.json
