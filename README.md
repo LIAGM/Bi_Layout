@@ -1,3 +1,7 @@
+# News  ✨ ✨ 
+- **[2024-10-07]** Our code and dataset is released.
+- **[2024-02-26]** Our paper is accepted by **CVPR 2024**.
+
 # Bi-Layout
 This is PyTorch implementation of our paper "[No More Ambiguity in 360° Room Layout via Bi-Layout Estimation](https://arxiv.org/abs/2404.09993)"(CVPR 2024).  
  [[Project Page](https://liagm.github.io/Bi_Layout/)]
